@@ -4,11 +4,11 @@ import {KeyType} from "./App";
 type propsType={
     title:string,
     tasks:Array<inArray>
-    removeTask:(id:number)=>void
+    removeTask:(id:string)=>void
     changeFilter:(key: KeyType )=>void
 }
 export type inArray ={
-    id: number,
+    id: string,
     title:string,
     isDone:boolean,
 
