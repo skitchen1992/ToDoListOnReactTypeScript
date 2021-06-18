@@ -1,13 +1,20 @@
 import React from "react";
+import {KeyType} from "../App";
+
+
 
 type ProsType ={
-    callBack:()=>void
-    value:string
+    onFilterClickHandler:(str:KeyType ) =>void
+    value:KeyType
+    filter:KeyType
+
+
 
 }
 export const Button=(props:ProsType)=>{
-    const onClickHandler=()=>props.callBack()
+    const onClickHandler=()=>props.onFilterClickHandler(props.value)
     return(
-        <button onClick={onClickHandler}>{props.value}</button>
+        <button className={props.filter === props.value?'active-filter':''} onClick={onClickHandler}>{props.value}</button>
     )
 }
+

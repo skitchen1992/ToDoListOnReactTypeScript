@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, { useState} from 'react';
 import './App.css';
 import {inArray, Todolist} from "./Todolist";
 import {v1} from "uuid";
@@ -20,6 +20,15 @@ function App() {
         let newTask = {id: v1(), title: newTitle, isDone: false}
         setTask([newTask, ...tasks])
     }
+
+    const onChangeStatus = (id:string, isDone:boolean)=>{
+        const task = tasks.find(t=>t.id===id)
+        if(task){
+            task.isDone=isDone
+            setTask([...tasks])
+        }
+    }
+
 
     let [filter, setFilter] = useState<KeyType>('All')
 
@@ -48,6 +57,12 @@ function App() {
                       removeTask={removeTask}
                       changeFilter={changeFilter}
                       addTask={addTask}
+                      onChangeStatus={onChangeStatus}
+                      filter={filter}
+
+
+
+
             />
         </div>
     );
