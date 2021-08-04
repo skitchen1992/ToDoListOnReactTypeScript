@@ -14,14 +14,14 @@ type Task = {
 
 }
 export const Task = (props: Task) => {
-    const onClickHandler =useCallback(() => props.removeTask(props.task.id, props.todoListId),[props.removeTask,props.task.id,props.todoListId])
-    const onChangeHandler =useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const onClickHandler = useCallback(() => props.removeTask(props.task.id, props.todoListId), [props.removeTask, props.task.id, props.todoListId])
+    const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         let newIsDoneValue = e.currentTarget.checked;
         props.changeTaskStatus(props.task.id, newIsDoneValue, props.todoListId);
-    },[props.changeTaskStatus,props.task.id,props.todoListId])
+    }, [props.changeTaskStatus, props.task.id, props.todoListId])
     const onTitleChangeHandler = useCallback((newValue: string) => {
         props.changeTaskTitle(props.task.id, newValue, props.todoListId);
-    },[props.changeTaskTitle,props.task.id,props.todoListId])
+    }, [props.changeTaskTitle, props.task.id, props.todoListId])
     return (
         <div key={props.task.id} className={props.task.isDone ? "is-done" : ""}>
             <Checkbox
